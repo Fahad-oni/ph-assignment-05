@@ -12,9 +12,9 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
 
   
   return (
-    <div className="px-4 md:px-12 container mx-auto">
+    <div className="px-4 md:px-12 text-center sm:text-left container mx-auto">
       <h2 className="text-3xl font-bold ">
-        Explore the{' '}
+        Explore the
         <span className="bg-linear-to-r from-[#FF5722] to-[#D81B7E] bg-clip-text text-transparent">
           Technologies
         </span>
@@ -23,8 +23,8 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
         Pick one technology per category to build your ideal stack.
       </p>
 
-      <div className="flex gap-8 mt-12 items-start">
-        <div className="grid grid-cols-3 gap-8 ">
+      <div className="flex flex-col justify-center items-center md:flex gap-8 mt-12 md:items-start">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {technologies.map((technologi, ind: number) => (
             <TechnologyCard technologi={technologi} key={ind} />
           ))}

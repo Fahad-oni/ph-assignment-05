@@ -7,7 +7,7 @@ export interface TechnologyCardProps {
 
 export default function TechnologyCard({ technologi }: TechnologyCardProps) {
   return (
-    <div className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <div className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-left">
       <div className="mb-4 flex items-start justify-between">
         <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50">
           <img
