@@ -3,10 +3,10 @@ import Navlogo from '../assets/logo-text.png';
 
   const NavBar = () => {
   return (
-    <>
-      <nav className="grid grid-cols-3 items-center pt-4 px-4 md:px-12 sticky container mx-auto  ">
+    <div className="sticky top-0 bg-white">
+      <nav className="grid grid-cols-3 items-center pt-4 px-4 md:px-12 container mx-auto  ">
         <div className="md:hidden">
-          <GiHamburgerMenu className='text-2xl' />
+          <GiHamburgerMenu className="text-2xl" />
         </div>
         <div className="mr-6 sm:mr-0 ">
           <img src={Navlogo} alt="Dev Stack" className="" />
@@ -56,7 +56,7 @@ import Navlogo from '../assets/logo-text.png';
         </div>
       </nav>
       <div className="divider"></div>
-    </>
+    </div>
   );
 };
 
