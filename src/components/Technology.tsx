@@ -1,31 +1,33 @@
-import { use, useState } from "react"
-import type { ITechnology } from "../Types/type"
-import TechnologyCard from "./TechnologyCard";
-import SelectedTechnology from "./SelectedTechnology";
+import { use, useState } from 'react';
+import type { ITechnology } from '../Types/type';
+import TechnologyCard from './TechnologyCard';
+import SelectedTechnology from './SelectedTechnology';
 
 export interface TechnologyProps {
-  technologyPromise:Promise<ITechnology[]>
+  technologyPromise: Promise<ITechnology[]>;
 }
 
-export default function Technology({  technologyPromise }: TechnologyProps) {
-  
+export default function Technology({ technologyPromise }: TechnologyProps) {
   const technologies = use(technologyPromise);
 
-  const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState<
+    ITechnology[]
+  >([]);
 
-  const handleTechnology = (technology:ITechnology) => {
-    setSelectedTechnologies([...selectedTechnologies,technology])
-  }
+  const handleTechnology = (technology: ITechnology) => {
+    setSelectedTechnologies([...selectedTechnologies, technology]);
+  };
 
-  
   return (
-
     // explore technology section..
 
-    <div className="px-4 md:px-12  text-center sm:text-left container mx-auto">
+    <div
+      id="technologies"
+      className="px-4 md:px-12  text-center sm:text-left container mx-auto"
+    >
       <h2 className="text-3xl font-bold ">
-        Explore the
-        <span className="bg-linear-to-r from-[#FF5722] to-[#D81B7E] bg-clip-text text-transparent">
+        Explore the{' '}
+        <span className="bg-theme-gradient bg-clip-text text-transparent">
           Technologies
         </span>
       </h2>
@@ -48,8 +50,11 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
         </div>
 
         {/* selected technoloy section */}
-        
-        <SelectedTechnology selectedTechnologies={selectedTechnologies} setSelectedTechnologies={setSelectedTechnologies} />
+
+        <SelectedTechnology
+          selectedTechnologies={selectedTechnologies}
+          setSelectedTechnologies={setSelectedTechnologies}
+        />
       </div>
     </div>
   );

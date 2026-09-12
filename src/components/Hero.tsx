@@ -1,11 +1,14 @@
 import Hero_IMG from '../assets/banner-stack.png'
 const Hero = () => {
   return (
-    <div className="flex flex-col md:flex md:flex-row md:justify-between items-center py-4 px-4 md:px-12 container mx-auto">
+    <div
+      id="home"
+      className="flex flex-col md:flex md:flex-row md:justify-between items-center py-4 px-4 md:px-12 container mx-auto"
+    >
       <div className="space-y-8 text-center md:text-left md:max-w-[40%] place-content-start">
         <h2 className="text-4xl md:text-5xl font-bold ">
           Build Your Ideal <br />
-          <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
+          <span className=" bg-theme-gradient bg-clip-text text-transparent">
             Development Stack
           </span>
         </h2>
@@ -18,13 +21,12 @@ const Hero = () => {
             Explore Technologies
           </button>
           <button className="py-2 rounded border border-gray-500  text-[0.9rem] text-[#374151] cursor-pointer w-[40%]">
-            
             Learn More
           </button>
         </div>
       </div>
       <div className="">
-        <img src={Hero_IMG} alt="" className='w-125 ' />
+        <img src={Hero_IMG} alt="" className="w-125 " />
       </div>
     </div>
   );

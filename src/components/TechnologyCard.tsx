@@ -1,6 +1,7 @@
 import { FaStar } from 'react-icons/fa';
 import type { ITechnology } from '../Types/type';
 import { toast } from 'react-toastify';
+import { FiCheck } from 'react-icons/fi';
 
 export interface TechnologyCardProps {
   technologi: ITechnology;
@@ -34,11 +35,10 @@ export default function TechnologyCard({
             className="h-6 w-6"
           />
         </div>
-        {technologi.badge && (
-          <span className="rounded-md bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
-            {technologi.badge}
-          </span>
-        )}
+
+        <span className="rounded-md bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+          {technologi.badge}
+        </span>
       </div>
 
       <h3 className="mb-1.5 text-lg font-medium text-gray-900">
@@ -66,7 +66,13 @@ export default function TechnologyCard({
         disabled={isSelected}
         className={`w-full rounded-full py-3 text-sm  transition-transform active:scale-[0.98]  ${isSelected ? `text-red-500 cursor-not-allowed bg-none border font-bold border-red-500 ` : 'text-white cursor-pointer  bg-gray-900 font-medium '}`}
       >
-        {isSelected ? 'Added to Stack' : 'Add to stack'}
+        {isSelected ? (
+          <span className="flex items-center justify-center gap-1">
+            <FiCheck className="text-2xl" /> Added to Stack
+          </span>
+        ) : (
+          'Add to stack'
+        )}
       </button>
     </div>
   );
