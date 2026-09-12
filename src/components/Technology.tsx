@@ -1,6 +1,7 @@
-import { use } from "react"
+import { use, useState } from "react"
 import type { ITechnology } from "../Types/type"
 import TechnologyCard from "./TechnologyCard";
+import SelectedTechnologyCard from "./SelectedTechnologyCard";
 
 export interface TechnologyProps {
   technologyPromise:Promise<ITechnology[]>
@@ -9,6 +10,12 @@ export interface TechnologyProps {
 export default function Technology({  technologyPromise }: TechnologyProps) {
   
   const technologies = use(technologyPromise);
+
+  const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([]);
+
+  const handleTechnology = (technology:ITechnology) => {
+    setSelectedTechnologies([...selectedTechnologies,technology])
+  }
 
   
   return (
@@ -25,18 +32,44 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
 
       <div className="flex flex-col justify-center items-center md:flex md:flex-row gap-8 mt-12 md:items-start">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {technologies.map((technologi, ind: number) => (
-            <TechnologyCard technologi={technologi} key={ind} />
+          {technologies.map(technologi => (
+            <TechnologyCard
+              technologi={technologi}
+              key={technologi.id}
+              onAdd={handleTechnology}
+            />
           ))}
         </div>
+
+        {/* Selected Technology Section. */}
         <div className="border border-gray-200 rounded-xl w-70 p-4 flex flex-col gap-2">
           <h2 className="text-xl font-bold">Your Stack</h2>
-          <p className="text-sm text-[#94A3B8]">
-            No technologies selected yet.
-          </p>
-          <div className="border border-dashed border-gray-200 rounded-lg flex items-center justify-center p-4">
-          <span className="text-gray-400 text-sm">Your stack is empty.</span>
-          </div>
+          {/* Changing message on selection */}
+          {selectedTechnologies.length === 0 ? (
+            <p className="text-sm text-[#94A3B8]">
+              No technologies selected yet.
+            </p>
+          ) : (
+            <p className="text-sm text-[#94A3B8]">
+              {selectedTechnologies.length} technolog
+              {selectedTechnologies.length > 1 ? 'ies' : 'y'} selected.
+            </p>
+          )}
+          {/* update selected stack over selection */}
+
+          {selectedTechnologies.length === 0 ? (
+            <div className="border border-dashed border-gray-200 rounded-lg flex items-center justify-center p-4">
+              <span className="text-gray-400 text-sm">
+                Your stack is empty.
+              </span>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {selectedTechnologies.map((technology: ITechnology) => (
+                <SelectedTechnologyCard technology={technology} key={technology.id}/>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
