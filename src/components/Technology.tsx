@@ -2,6 +2,7 @@ import { use, useState } from "react"
 import type { ITechnology } from "../Types/type"
 import TechnologyCard from "./TechnologyCard";
 import SelectedTechnologyCard from "./SelectedTechnologyCard";
+import { toast } from "react-toastify";
 
 export interface TechnologyProps {
   technologyPromise:Promise<ITechnology[]>
@@ -16,6 +17,12 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
   const handleTechnology = (technology:ITechnology) => {
     setSelectedTechnologies([...selectedTechnologies,technology])
   }
+
+  const handleRemoveAll = () => { 
+    setSelectedTechnologies([]);
+    toast.info('stack cleared')
+  }
+
 
   
   return (
@@ -37,6 +44,7 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
               technologi={technologi}
               key={technologi.id}
               onAdd={handleTechnology}
+              selectedTechnologies={selectedTechnologies}
             />
           ))}
         </div>
@@ -73,6 +81,17 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
                   setSelectedTechnologies={setSelectedTechnologies}
                 />
               ))}
+            </div>
+          )}
+          {selectedTechnologies.length === 0 ? (
+            ''
+          ) : (
+            <div className="w-full mt-4">
+                <button
+                  onClick={()=>handleRemoveAll()}
+                  className="btn btn-outline btn-secondary w-full">
+                Remove All
+              </button>
             </div>
           )}
         </div>

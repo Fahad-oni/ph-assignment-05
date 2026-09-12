@@ -1,6 +1,7 @@
 import { RxCross2 } from 'react-icons/rx';
 import type { ITechnology } from '../Types/type';
 import type { Dispatch, SetStateAction } from 'react';
+import { toast } from 'react-toastify';
 
 export interface SelectedTechnologyCardProps {
   technology: ITechnology;
@@ -14,8 +15,10 @@ export default function SelectedTechnologyCard({
 
   const handleDeleteBtn = () => {
     const restTechnologise = selectedTechnologies.filter((tech: ITechnology) => tech.name != technology.name)
-    
     setSelectedTechnologies(restTechnologise);
+    toast.info(`${technology.name} removed from your stack`);
+    
+    
   }
 
   return (
@@ -35,6 +38,7 @@ export default function SelectedTechnologyCard({
           className="text-2xl text-red-500 cursor-pointer"
         />
       </div>
+      
     </div>
   );
 }

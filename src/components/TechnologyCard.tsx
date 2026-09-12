@@ -1,21 +1,26 @@
 import { FaStar } from 'react-icons/fa';
 import type { ITechnology } from '../Types/type';
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 export interface TechnologyCardProps {
   technologi: ITechnology;
+  selectedTechnologies: ITechnology[];
   onAdd: (technology: ITechnology) => void;
 }
 
 export default function TechnologyCard({
   technologi,
   onAdd,
+  selectedTechnologies,
 }: TechnologyCardProps) {
-  const [isSelected, setIsSelected] = useState(false);
+  // const [isSelected, setIsSelected] = useState(false);
+
+  const isSelected = selectedTechnologies.some(
+    (technology: ITechnology) => technology.id === technologi.id,
+  );
 
   const handleSelectBtn = () => {
-    setIsSelected(true);
+    // setIsSelected(true);
     toast.success(`${technologi.name} added to stack`);
     onAdd(technologi);
   };
