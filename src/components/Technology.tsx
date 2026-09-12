@@ -35,8 +35,8 @@ export default function Technology({ technologyPromise }: TechnologyProps) {
         Pick one technology per category to build your ideal stack.
       </p>
 
-      <div className="flex flex-col justify-center items-center md:flex md:flex-row gap-8 mt-12 md:items-start">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+      <div className="flex flex-col justify-center items-center    xl:flex-row gap-8 mt-12 xl:items-start">
+        <div className="grid sm:grid-cols-2 md:gap-12 xl:grid-cols-3 gap-8 ">
           {/* technology card section  */}
 
           {technologies.map(technologi => (
