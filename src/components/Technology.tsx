@@ -66,7 +66,12 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
           ) : (
             <div className="flex flex-col gap-4">
               {selectedTechnologies.map((technology: ITechnology) => (
-                <SelectedTechnologyCard technology={technology} key={technology.id}/>
+                <SelectedTechnologyCard
+                  technology={technology}
+                  key={technology.id}
+                  selectedTechnologies={selectedTechnologies}
+                  setSelectedTechnologies={setSelectedTechnologies}
+                />
               ))}
             </div>
           )}
