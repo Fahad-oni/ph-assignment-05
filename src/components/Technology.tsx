@@ -1,8 +1,7 @@
 import { use, useState } from "react"
 import type { ITechnology } from "../Types/type"
 import TechnologyCard from "./TechnologyCard";
-import SelectedTechnologyCard from "./SelectedTechnologyCard";
-import { toast } from "react-toastify";
+import SelectedTechnology from "./SelectedTechnology";
 
 export interface TechnologyProps {
   technologyPromise:Promise<ITechnology[]>
@@ -18,15 +17,12 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
     setSelectedTechnologies([...selectedTechnologies,technology])
   }
 
-  const handleRemoveAll = () => { 
-    setSelectedTechnologies([]);
-    toast.info('stack cleared')
-  }
-
-
   
   return (
-    <div className="px-4 md:px-12 text-center sm:text-left container mx-auto">
+
+    // explore technology section..
+
+    <div className="px-4 md:px-12  text-center sm:text-left container mx-auto">
       <h2 className="text-3xl font-bold ">
         Explore the
         <span className="bg-linear-to-r from-[#FF5722] to-[#D81B7E] bg-clip-text text-transparent">
@@ -39,6 +35,8 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
 
       <div className="flex flex-col justify-center items-center md:flex md:flex-row gap-8 mt-12 md:items-start">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          {/* technology card section  */}
+
           {technologies.map(technologi => (
             <TechnologyCard
               technologi={technologi}
@@ -49,52 +47,9 @@ export default function Technology({  technologyPromise }: TechnologyProps) {
           ))}
         </div>
 
-        {/* Selected Technology Section. */}
-        <div className="border border-gray-200 rounded-xl w-70 p-4 flex flex-col gap-2">
-          <h2 className="text-xl font-bold">Your Stack</h2>
-          {/* Changing message on selection */}
-          {selectedTechnologies.length === 0 ? (
-            <p className="text-sm text-[#94A3B8]">
-              No technologies selected yet.
-            </p>
-          ) : (
-            <p className="text-sm text-[#94A3B8]">
-              {selectedTechnologies.length} technolog
-              {selectedTechnologies.length > 1 ? 'ies' : 'y'} selected.
-            </p>
-          )}
-          {/* update selected stack over selection */}
-
-          {selectedTechnologies.length === 0 ? (
-            <div className="border border-dashed border-gray-200 rounded-lg flex items-center justify-center p-4">
-              <span className="text-gray-400 text-sm">
-                Your stack is empty.
-              </span>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4">
-              {selectedTechnologies.map((technology: ITechnology) => (
-                <SelectedTechnologyCard
-                  technology={technology}
-                  key={technology.id}
-                  selectedTechnologies={selectedTechnologies}
-                  setSelectedTechnologies={setSelectedTechnologies}
-                />
-              ))}
-            </div>
-          )}
-          {selectedTechnologies.length === 0 ? (
-            ''
-          ) : (
-            <div className="w-full mt-4">
-                <button
-                  onClick={()=>handleRemoveAll()}
-                  className="btn btn-outline btn-secondary w-full">
-                Remove All
-              </button>
-            </div>
-          )}
-        </div>
+        {/* selected technoloy section */}
+        
+        <SelectedTechnology selectedTechnologies={selectedTechnologies} setSelectedTechnologies={setSelectedTechnologies} />
       </div>
     </div>
   );
