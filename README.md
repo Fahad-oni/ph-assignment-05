@@ -10,15 +10,15 @@ A modern technology discovery platform built with React, TypeScript, Tailwind CS
 
 This project was built using the following technologies and tools:
 
-- Frontend
+# Frontend
 
-  React — Component-based UI development
-  TypeScript — Type-safe and maintainable code
-  ES6+ JavaScript — Modern JavaScript features and syntax
-  Tailwind CSS — Utility-first responsive styling
-  DaisyUI — Pre-built UI components and Tailwind CSS extensions
-  React Icons — Consistent and reusable icon components
-  React Toastify — Toast notifications and user feedback
+- React — Component-based UI development
+-  TypeScript — Type-safe and maintainable code
+-  ES6+ JavaScript — Modern JavaScript features and syntax
+-  Tailwind CSS — Utility-first responsive styling
+-  DaisyUI — Pre-built UI components and Tailwind CSS extensions
+-  React Icons — Consistent and reusable icon components
+-  React Toastify — Toast notifications and user feedback
 
 # Development & Build Tools
 
