@@ -1,5 +1,4 @@
 
-
 # 🚀 Dev Stack
 
 A modern technology discovery platform built with React, TypeScript, Tailwind CSS, and Vite.
